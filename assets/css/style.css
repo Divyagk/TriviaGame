@@ -1,0 +1,27 @@
+/* styling the whole body */
+body {
+    background-image: url("../images/gameofthrones.jpg");
+    background-size: cover;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    color: rgb(141, 141, 190);
+  }
+
+/* styling the jumbotron */
+.jumbotron{
+      padding:4px;
+      margin-top: 2px;
+     }
+/* styling the display block (class="qansdisplay") */
+     .qansdisplay {
+        margin: 30px auto;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 2px solid #403fd3;
+        height: 400px;
+        width: 50%;
+        text-align: center;
+        
+    
+        
+        
+      }
