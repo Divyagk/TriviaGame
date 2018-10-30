@@ -58,37 +58,37 @@ $(document).ready(function () {
         },
         {
             question: "Prince Oberyn Martell is nicknamed the 'Red Viper' because of his combat and:",
-            options: ["stark","targaryen","tyrell","Knowledge of poisons"],
+            options: ["Nighttime attacks","Ruby colored armor","Pride in drawing blood first","Knowledge of poisons"],
             ans:3,
             image:"assets/images/redviper.gif"
 
         },
         {
-            question: "Which is not a Game of Thrones royal family name?",
-            options: ["stark","targaryen","tyrell","baelish"],
-            ans:2,
-            image:"assets/images/aryas fighting style.gif"
+            question: "Who created the secret tunnel in the sewers under Casterly Rock?",
+            options: ["Tyrion Lannister","Varys","Jaime Lannister","Lord Baelish"],
+            ans:0,
+            image:"assets/images/casterly Rock.gif"
 
         },
         {
-            question: "Which is not a Game of Thrones royal family name?",
-            options: ["stark","targaryen","tyrell","baelish"],
-            ans:2,
-            image:"assets/images/aryas fighting style.gif"
+            question: "What is Sansa Stark's favorite treat?",
+            options: ["Strawberry","Lemon Cakes","Honey Cakes","Apple cranberry"],
+            ans:1,
+            image:"assets/images/cake.gif"
 
         },
         {
-            question: "Which is not a Game of Thrones royal family name?",
-            options: ["stark","targaryen","tyrell","baelish"],
-            ans:2,
-            image:"assets/images/aryas fighting style.gif"
+            question: "How many knights make up the kingsguard",
+            options: ["8","12","6","7"],
+            ans:3,
+            image:"assets/images/knights.gif"
 
         },
         {
-            question: "Which is not a Game of Thrones royal family name?",
-            options: ["stark","targaryen","tyrell","baelish"],
-            ans:2,
-            image:"assets/images/aryas fighting style.gif"
+            question: "Who is the youngest of Ned Stark’s children?",
+            options: ["Bran","Rickon","Arya","Sansa"],
+            ans:1,
+            image:"assets/images/rickon.gif"
 
         }
     ]
