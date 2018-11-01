@@ -16,7 +16,7 @@ body {
      .qansdisplay {
         margin: 30px auto;
         background-color: rgba(255, 255, 255, 0.7);
-        border: 2px solid #403fd3;
+        border: 2px solid rgb(141, 141, 190);
         height: 400px;
         width: 50%;
         text-align: center;
