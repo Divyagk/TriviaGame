@@ -106,22 +106,34 @@ $(document).ready(function () {
     //when the player click the start button,hide the start button and show the question,options & time remaining.
     $('#start').click(function () {
 
-        var counter = 25;
+        var counter = 15;
         $("#start").hide();
         $("#restart").hide();
         questionCall();
         setInterval(function () {
+
             counter--;
             if (counter >= 0) {
                 $("#timeremains").html("<h3>" + "Time remaining: " + counter + "</h3>");
 
-
             }
             if (counter === 0) {
-                alert('sorry, out of time');
                 clearInterval(counter);
+
+
             }
         }, 1000);
+
+    });
+    $('#answerblock').click(function () {
+        if (playeroptions === ans) {
+            $("#answerblock").html("<h3>" + "correctanswer!" + "</h3>");
+            answercount++;
+        }
+
+
+
+
 
     });
 
