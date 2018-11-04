@@ -88,18 +88,29 @@ $(document).ready(function () {
     ]
 
     function questionCall() {
-         
-        
+
+        // make=Math.floor(Math.random()*ansqcimg.length)
+
+        // var rt=ansqcimg[make]
+        // console.log(rt)
+
+
+        for (var i = 0; i < ansqcimg.length; i++) {
+
+            ansqcimg[i].question;
+            ansqcimg[i].options;
+            console.log(ansqcimg[i].question);
+            console.log(ansqcimg[i].options);
+           
+
+        }
+
 
 
     }
+    
 
-
-
-
-
-
-questionCall()
+   
 
 
 
@@ -114,6 +125,14 @@ questionCall()
 
 
 
+// for(var i=0;i<ansqcimg.length;i++){
+//     ansqcimg[i].ans;
+//     ansqcimg[i].image;
+//     console.log(ansqcimg[i].ans)
+//     console.log(ansqcimg[i]. image)
+
+
+// }
 
 
 // pseudo coding

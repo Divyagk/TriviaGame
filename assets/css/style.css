@@ -25,3 +25,13 @@ body {
         
         
       }
+      
+      #start,#restart{
+      
+        position: relative;
+        bottom: -150px;
+      }
+
+      .btn{
+        background-color: rgb(51, 42, 59);
+      }
