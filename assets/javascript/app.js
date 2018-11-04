@@ -13,7 +13,7 @@ $(document).ready(function () {
     });
 
     // declaring an array to store answers,questions,options,images corresponding to answers.
-    var ansqcimg = [
+    var ansqoimg = [
         {
             question: "How did Daenerys Targaryen eventually hatch her dragon eggs?",
             options: ["In a lightning storm", "In a fireplace", "In a funeral pyre", "In a frozen cave"],
@@ -86,31 +86,51 @@ $(document).ready(function () {
 
         }
     ]
-
+    // Display question and options randomly.
     function questionCall() {
+        var play;
+        make = Math.floor(Math.random() * ansqoimg.length);
+        var play = ansqoimg[make];
+        // display questions 
+        $("#questionblock").html("<h2>" + play.question + "</h2>");
 
-        // make=Math.floor(Math.random()*ansqcimg.length)
-
-        // var rt=ansqcimg[make]
-        // console.log(rt)
-
-
-        for (var i = 0; i < ansqcimg.length; i++) {
-
-            ansqcimg[i].question;
-            ansqcimg[i].options;
-            console.log(ansqcimg[i].question);
-            console.log(ansqcimg[i].options);
-           
-
+        // iterate through options array and display
+        for (var i = 0; i < play.options.length; i++) {
+            var playeroptions = $("<div>");
+            playeroptions.addClass("answeroptions");
+            playeroptions.html(play.options[i]);
+            playeroptions.attr("data-guessvalue", i);
+            $("#answerblock").append(playeroptions);
         }
-
-
-
     }
-    
+    //when the player click the start button,hide the start button and show the question,options & time remaining.
+    $('#start').click(function () {
 
-   
+        var counter = 25;
+        $("#start").hide();
+        $("#restart").hide();
+        questionCall();
+        setInterval(function () {
+            counter--;
+            if (counter >= 0) {
+                $("#timeremains").html("<h3>" + "Time remaining: " + counter + "</h3>");
+
+
+            }
+            if (counter === 0) {
+                alert('sorry, out of time');
+                clearInterval(counter);
+            }
+        }, 1000);
+
+    });
+
+
+
+
+
+
+
 
 
 

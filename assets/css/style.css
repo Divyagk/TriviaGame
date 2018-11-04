@@ -20,18 +20,20 @@ body {
         height: 400px;
         width: 50%;
         text-align: center;
-        
-    
-        
-        
-      }
-      
+        }
+      /* adjust the postion of the play again and start game buttons.  */
       #start,#restart{
       
         position: relative;
         bottom: -150px;
       }
-
+     /* styling the buttons. */
       .btn{
         background-color: rgb(51, 42, 59);
+      }
+      /* styling the questionanswerblock and time remains  */
+      #timeremains,#questionblock,#answerblock{
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+        color: rgb(40, 4, 77);
       }
