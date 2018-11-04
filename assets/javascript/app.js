@@ -19,14 +19,14 @@ $(document).ready(function () {
             question: "How did Daenerys Targaryen eventually hatch her dragon eggs?",
             options: ["In a lightning storm", "In a fireplace", "In a funeral pyre", "In a frozen cave"],
             ans: 2,
-            image: "assets/images/Dragon egg.gif"
+            image: "assets/images/Dragonegg.gif"
 
         },
         {
             question: " Ayra's fighting style is called?",
             options: ["Wolf Wield", "Water Dancing", "Stinger", "Slashing Steel"],
             ans: 1,
-            image: "assets/images/aryas fighting style.gif"
+            image: "assets/images/aryasfightingstyle.gif"
 
 
         },
@@ -34,7 +34,7 @@ $(document).ready(function () {
             question: "Besides dragonglasswhat is the only other substance capable of defeating White Walkers",
             options: ["Weirwood", "Wildfire", "Snowballs", "Valyrian Steel"],
             ans: 3,
-            image: "assets/images/White Walkers.gif"
+            image: "assets/images/WhiteWalkers.gif"
 
         },
         {
@@ -48,7 +48,7 @@ $(document).ready(function () {
             question: "Who shoots the flaming arrow that subsequently destroy's Stannis' fleet in Blackwater Bay?",
             options: ["Jaime Lannister", "Bronn", "King joffrey", "Tyrion Lannister"],
             ans: 1,
-            image: "assets/images/flaming arrow.gif"
+            image: "assets/images/flamingarrow.gif"
 
         },
         {
@@ -62,7 +62,7 @@ $(document).ready(function () {
             question: "Who created the secret tunnel in the sewers under Casterly Rock?",
             options: ["Tyrion Lannister", "Varys", "Jaime Lannister", "Lord Baelish"],
             ans: 0,
-            image: "assets/images/casterly Rock.gif"
+            image: "assets/images/casterlyRock.gif"
 
         },
         {
@@ -97,6 +97,10 @@ $(document).ready(function () {
     var intervalId;
     var play;
     var holder = [];
+    var correctCount = 0;
+    var wrongCount = 0;
+    var unanswerCount = 0;
+     var newArray=[];
 
 
     $("#restart").hide();
@@ -136,11 +140,20 @@ $(document).ready(function () {
             // grab array position from userclick.
             userGuess = parseInt($(this).attr("data-guessvalue"));
             console.log(userGuess);
-            if(answeroptions===user){
-                console("hi");
+            if (play.ans === userGuess) {
+                correctCount++;
+                stop();
+                userGuess="";
+                $("#answerblock").html("<p> correct answer! " + play.options[play.ans] + "</p>");
+                showgif();
             }
-            else{
-                console.log("hee");
+            else {
+                wrongCount++;
+                stop();
+                userGuess="";
+                $("#answerblock").html("<p>Wrong answer! The correct answer is: " + play.options[play.ans] + "</p>");
+                showgif();
+
             }
         });
     }
@@ -162,7 +175,7 @@ $(document).ready(function () {
             unanswerCount++;
             stop();
             $("#answerblock").html("<p>Time is up! The correct answer is: " + play.options[play.ans] + "</p>");
-            hidepicture();
+            showgif();
         }
     }
 
@@ -170,6 +183,16 @@ $(document).ready(function () {
     function stop() {
         running = false;
         clearInterval(intervalId);
+    }
+
+    function showgif() {
+        $("#answerblock").append("<img src=" + play.image + ">");
+        newArray.push(play);
+	ansqoimg.splice(make,1);
+        var hidegif = setTimeout(function () {
+            $("#answerblock").empty();
+            timer = 15;
+        },3000);
     }
 
 
