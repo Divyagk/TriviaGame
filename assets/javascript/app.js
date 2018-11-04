@@ -12,6 +12,7 @@ $(document).ready(function () {
         audioElement.pause();
     });
 
+
     // declaring an array to store answers,questions,options,images corresponding to answers.
     var ansqoimg = [
         {
@@ -86,11 +87,38 @@ $(document).ready(function () {
 
         }
     ]
+
+
+
+
+    var userGuess = "";
+    var running = false;
+    var timer = 15;
+    var intervalId;
+    var play;
+    var holder = [];
+
+
+    $("#restart").hide();
     // Display question and options randomly.
+
+    //when the player click the start button,hide the start button and show the question,options & time remaining.
+    $("#start").on("click", function () {
+
+        //     var counter = 5;
+        $("#start").hide();
+
+        questionCall();
+        runTimer();
+        for (var i = 0; i < ansqoimg.length; i++) {
+            holder.push(ansqoimg[i]);
+        }
+    });
+
     function questionCall() {
-        var play;
+
         make = Math.floor(Math.random() * ansqoimg.length);
-        var play = ansqoimg[make];
+        play = ansqoimg[make];
         // display questions 
         $("#questionblock").html("<h2>" + play.question + "</h2>");
 
@@ -101,41 +129,48 @@ $(document).ready(function () {
             playeroptions.html(play.options[i]);
             playeroptions.attr("data-guessvalue", i);
             $("#answerblock").append(playeroptions);
+            console.log(playeroptions)
+        }
+        // get the userGuess and compare with answer.
+        $(".answeroptions").on("click", function () {
+            // grab array position from userclick.
+            userGuess = parseInt($(this).attr("data-guessvalue"));
+            console.log(userGuess);
+            if(answeroptions===user){
+                console("hi");
+            }
+            else{
+                console.log("hee");
+            }
+        });
+    }
+
+    // setting the timer for each question.
+    function runTimer() {
+        if (!running) {
+            intervalId = setInterval(decrement, 1000);
+            running = true;
         }
     }
-    //when the player click the start button,hide the start button and show the question,options & time remaining.
-    $('#start').click(function () {
+    //timer countdown.
+    function decrement() {
+        $("#timeremains").html("<h3>Time remaining: " + timer + "</h3>");
+        timer--;
 
-        var counter = 15;
-        $("#start").hide();
-        $("#restart").hide();
-        questionCall();
-        setInterval(function () {
-
-            counter--;
-            if (counter >= 0) {
-                $("#timeremains").html("<h3>" + "Time remaining: " + counter + "</h3>");
-
-            }
-            if (counter === 0) {
-                clearInterval(counter);
-
-
-            }
-        }, 1000);
-
-    });
-    $('#answerblock').click(function () {
-        if (playeroptions === ans) {
-            $("#answerblock").html("<h3>" + "correctanswer!" + "</h3>");
-            answercount++;
+        //stop timer if it reach 0.
+        if (timer === 0) {
+            unanswerCount++;
+            stop();
+            $("#answerblock").html("<p>Time is up! The correct answer is: " + play.options[play.ans] + "</p>");
+            hidepicture();
         }
+    }
 
-
-
-
-
-    });
+    //timer stop
+    function stop() {
+        running = false;
+        clearInterval(intervalId);
+    }
 
 
 
