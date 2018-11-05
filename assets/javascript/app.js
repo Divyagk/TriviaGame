@@ -3,7 +3,12 @@ $(document).ready(function () {
     // Gets Link for Theme Song
     var audioElement = document.createElement("audio");
     audioElement.setAttribute("src", "assets/sounds/game-of-thrones-theme-song-ringtone-30782.mp3");
-
+    var clickaudio = document.createElement("audio");
+    clickaudio.setAttribute("src", "assets/sounds/buttonclick.wav");
+    var winaudio = document.createElement("audio");
+    winaudio.setAttribute("src", "assets/sounds/winsound.wav");
+    var lossaudio = document.createElement("audio");
+    lossaudio.setAttribute("src", "assets/sounds/losssound.wav");
     // Theme Button
     $(".theme-button").on("click", function () {
         audioElement.play();
@@ -107,6 +112,7 @@ $(document).ready(function () {
 
     //when the player click the start button,hide the start button and show the question,options & time remaining.
     $("#start").on("click", function () {
+        clickaudio.play();
         $("#start").hide();
         questionCall();
         runTimer();
@@ -123,8 +129,10 @@ $(document).ready(function () {
 
         // iterate through options array and display
         for (var i = 0; i < play.options.length; i++) {
-            var playeroptions = $("<div>");
-            playeroptions.addClass("answeroptions");
+            // var playeroptions = $("<div>");
+            var playeroptions = $("<button>");
+            // playeroptions.addClass("answeroptions");
+            playeroptions.addClass("btn btn-warning answeroptions");
             playeroptions.html(play.options[i]);
             playeroptions.attr("data-guessvalue", i);
             $("#answerblock").append(playeroptions);
@@ -132,6 +140,7 @@ $(document).ready(function () {
         }
         // get the userGuess and compare with answer.
         $(".answeroptions").on("click", function () {
+            clickaudio.play();
             // grab array position from userclick.
             userGuess = parseInt($(this).attr("data-guessvalue"));
             console.log(userGuess);
@@ -140,6 +149,7 @@ $(document).ready(function () {
                 stop();
                 userGuess = "";
                 $("#answerblock").html("<p> correct answer! " + play.options[play.ans] + "</p>");
+                winaudio.play();
                 showgif();
             }
             else {
@@ -147,6 +157,7 @@ $(document).ready(function () {
                 stop();
                 userGuess = "";
                 $("#answerblock").html("<p>Wrong answer! The correct answer is: " + play.options[play.ans] + "</p>");
+                lossaudio.play();
                 showgif();
 
             }
@@ -170,6 +181,7 @@ $(document).ready(function () {
             unanswerCount++;
             stop();
             $("#answerblock").html("<p>Time is up! The correct answer is: " + play.options[play.ans] + "</p>");
+            lossaudio.play();
             showgif();
         }
     }
@@ -206,6 +218,7 @@ $(document).ready(function () {
         }, 3000);
     }
     $("#restart").on("click", function () {
+        clickaudio.play();
         $("#restart").hide();
         $("#answerblock").empty();
         $("#questionblock").empty();
