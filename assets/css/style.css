@@ -48,4 +48,14 @@ body {
         max-height: 230px;
         width: auto;
       }
+    .answeroptions{
+      height: 30px; /*Specify Height*/
+      border: 2px solid rgb(51, 42, 59); /*Add 1px solid border, use any color you want*/
+      background-color: rgb(200, 193, 207);; /*Add a background color to the box*/
+      text-align:center; /*Align the text to the center*/
+      margin:5%;
+      margin-left: 7%;
+      cursor: pointer;
       
+      
+      }
