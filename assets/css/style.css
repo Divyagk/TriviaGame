@@ -17,12 +17,12 @@ body {
         margin: 30px auto;
         background-color: rgba(255, 255, 255, 0.7);
         border: 2px solid rgb(141, 141, 190);
-        height: 400px;
+        height: 430px;
         width: 50%;
         text-align: center;
         }
-      /* adjust the postion of the play again and start game buttons.  */
-      #start,#restart{
+      /* adjust the postion of the start game button.  */
+      #start{
       
         position: relative;
         bottom: -150px;
@@ -37,3 +37,15 @@ body {
         font-size: 20px;
         color: rgb(40, 4, 77);
       }
+
+    
+      /* adjust the postion of the play again button.  */
+      #restart{
+        position: relative;
+        bottom: -250px;
+      }
+      img {
+        max-height: 230px;
+        width: auto;
+      }
+      

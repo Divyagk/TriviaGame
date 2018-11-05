@@ -100,18 +100,14 @@ $(document).ready(function () {
     var correctCount = 0;
     var wrongCount = 0;
     var unanswerCount = 0;
-     var newArray=[];
-
-
+    var newArray = [];
+    var quecount = ansqoimg.length;
+    // to hide the playagain button.
     $("#restart").hide();
-    // Display question and options randomly.
 
     //when the player click the start button,hide the start button and show the question,options & time remaining.
     $("#start").on("click", function () {
-
-        //     var counter = 5;
         $("#start").hide();
-
         questionCall();
         runTimer();
         for (var i = 0; i < ansqoimg.length; i++) {
@@ -120,7 +116,6 @@ $(document).ready(function () {
     });
 
     function questionCall() {
-
         make = Math.floor(Math.random() * ansqoimg.length);
         play = ansqoimg[make];
         // display questions 
@@ -143,14 +138,14 @@ $(document).ready(function () {
             if (play.ans === userGuess) {
                 correctCount++;
                 stop();
-                userGuess="";
+                userGuess = "";
                 $("#answerblock").html("<p> correct answer! " + play.options[play.ans] + "</p>");
                 showgif();
             }
             else {
                 wrongCount++;
                 stop();
-                userGuess="";
+                userGuess = "";
                 $("#answerblock").html("<p>Wrong answer! The correct answer is: " + play.options[play.ans] + "</p>");
                 showgif();
 
@@ -184,16 +179,43 @@ $(document).ready(function () {
         running = false;
         clearInterval(intervalId);
     }
-
+    // to display the gif after unanswered,correctanswer,wronganswer.
     function showgif() {
         $("#answerblock").append("<img src=" + play.image + ">");
         newArray.push(play);
-	ansqoimg.splice(make,1);
+        ansqoimg.splice(make, 1);
         var hidegif = setTimeout(function () {
             $("#answerblock").empty();
             timer = 15;
-        },3000);
+            if ((wrongCount + correctCount + unanswerCount) === quecount) {
+                $("#questionblock").empty();
+                $("#questionblock").html("<h3>Game Over!</h3>");
+                $("#answerblock").append("<h4> Correct answers: " + correctCount + "</h4>");
+                $("#answerblock").append("<h4> Wrong answers: " + wrongCount + "</h4>");
+                $("#answerblock").append("<h4> Unanswered: " + unanswerCount + "</h4>");
+                $("#restart").show();
+                correctCount = 0;
+                wrongCount = 0;
+                unanswerCount = 0;
+
+            } else {
+                runTimer();
+                questionCall();
+
+            }
+        }, 3000);
     }
+    $("#restart").on("click", function () {
+        $("#restart").hide();
+        $("#answerblock").empty();
+        $("#questionblock").empty();
+        for (var i = 0; i < holder.length; i++) {
+            ansqoimg.push(holder[i]);
+        }
+        runTimer();
+        questionCall();
+
+    })
 
 
 
