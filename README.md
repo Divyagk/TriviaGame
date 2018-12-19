@@ -8,4 +8,5 @@ When you click the start game button,the game starts. At a time, only one questi
 Technologies Used: HTML, CSS bootstrap, Javascript,jQuery.
 This is maintained by Divya Gk.
 
+https://divyagk.github.io/TriviaGame/
   
