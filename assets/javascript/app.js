@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
     // Gets Link for Theme Song
-    // var audioElement = document.createElement("audio");
-    // audioElement.setAttribute("src", "assets/sounds/game-of-thrones-theme-song-ringtone-30782.mp3");
+    var audioElement = document.createElement("audio");
+    audioElement.setAttribute("src", "assets/sounds/game-of-thrones-theme-song-ringtone-30782.mp3");
     var clickaudio = document.createElement("audio");
     clickaudio.setAttribute("src", "assets/sounds/buttonclick.wav");
     var winaudio = document.createElement("audio");
